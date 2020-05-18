@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+ 
+{% block title %}Show Bantuan{% endblock %}
+ 
+{% block body %}
+ 
+<div class="container mt-5">
+    <h2>donasi</h2>
+    <div class="card" style="width: 20rem;">
+        <div class="col-12">
+
+            <h4 class="arial">{{ donasi['nama'] }}</h4>
+
+            <h6 class="text">{{ donasi['email'] }}</h6>
+
+            <h6 class="card-subtitle mb-1 text-muted"> {{ donasi['nama_bantuan'] }}</h6>
+            <p class="card-subtitle mb-2 text-muted">{{ donasi['jumlah_bantuan'] }}</p>
+            
+         
+        </div>
+    </div>
+</div>
+{% endblock %}

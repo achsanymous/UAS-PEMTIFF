@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block title %}Menu Donasi{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h1>Menu Bantuan</h1>
+    
+    <div class="row">
+        <div class="col-8 mt-4">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success tombolTambahData" data-toggle="modal" data-target="#formModal">
+                Tambahkan Bantuan
+            </button>
+
+        </br>
+        </br>
+
+            
+            <h3>Daftar donasi</h3>
+
+            <div class="row">
+                <div class="col-8">
+                    {{ flash.flash() }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8">
+                    <form action="{{ BASE_URL }}/bantuan/search" method="post">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Cari bantuan"  id="keyword" name="keyword">
+                            <div class="input-group-append">
+                              <button class="btn btn-success" type="submit">Cari</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <ul class="list-group">
+                {% for Donasi in donasis %}
+                <li class="list-group-item">
+                    {{ donasi['nama'] }}
+<!--                     
+                    <a href="{{ BASE_URL }}/donasi/delete/{{ donasi['id'] }}" class="badge badge-danger float-right ml-1" onclick="return confirm('yakin?');">delete</a>
+
+                    <a href="{{ BASE_URL }}/donasi/update/{{ donasi['id'] }}" class="badge badge-success float-right ml-1 tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="{{ agenda['id'] }}">update</a> -->
+
+                    <a href="{{ BASE_URL }}/donasi/show/{{ donasi['id'] }}" class="badge badge-primary float-right ml-1">show</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="judulModal" aria-hidden="true">
+    <form action="{{BASE_URL}}/donasi/add" method="POST">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="judulModal">Form Tambah Bantuan Baru</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <input type="hidden" name="id" id="id">
+
+                    <div class="form-group">
+                        <label for="title">Nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama"
+                            placeholder=" ">
+
+                            <label for="title">email</label> 
+                            <input type="text" class="form-control" id="email" name="email"
+                            placeholder=" ">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Bantuan</label>
+                        </br>
+                        <label for="nama_bantuan">Nama barang : </label>
+                        </br>
+                        <input type="text" id="nama_bantuan" name="nama_bantuan" placeholder="">
+                        </br>
+                        </br>
+                        <label for="nama_bantuan">Jumlah barang : </label>
+                        </br>
+                        <input type="text" id="jumlah_bantuan" name="jumlah_bantuan" placeholder=" ">
+                    </div>
+                    
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Tambah Data</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

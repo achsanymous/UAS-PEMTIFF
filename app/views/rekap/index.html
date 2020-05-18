@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Menu Rekap{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <h1>Menu Rekap</h1>
+    
+    <div class="row">
+        <div class="col-8 mt-4">
+            <!-- Button trigger modal -->
+            
+            <h3>Daftar Rekap</h3>
+
+            <ul class="list-group">
+                {% for rekap in rekaps %}
+                <li class="list-group-item">
+                    {{ rekap['nama_bantuan'] }}
+                    {{ rekap['SUM(jumlah_bantuan)']}}
+                    <!-- <a href="{{ BASE_URL }}/rekap/delete/{{ rekap['id'] }}" class="badge badge-danger float-right ml-1" onclick="return confirm('yakin?');">delete</a>
+                    <a href="{{ BASE_URL }}/rekap/update/{{ rekap['id'] }}" class="badge badge-success float-right ml-1 tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="{{ rekap['nama'] }}">update</a> -->
+                    <!-- <a href="{{ BASE_URL }}/rekap/show/{{ rekap['id'] }}" class="badge badge-primary float-right ml-1">show</a> -->
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
