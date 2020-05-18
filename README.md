@@ -8,7 +8,12 @@ dengan implementasi MVC membuat web yang dapat merekam data donasi yang diberika
 
 
 home page :
-https://github.com/achsanymous/UAS-PEMTIFF/issues/1#issue-620313270
+![](home.jpg)
 
+donasi page :
+![](donasi.jpg)
+
+input :
+![](input.jpg)
 
 
